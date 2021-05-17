@@ -1,0 +1,15 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: "simple-java-app-ing"
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.class }}
+
+spec:
+  rules:
+    - http:
+        paths:
+          - path: {{ .Values.ingress.path }}
+            backend:
+              serviceName: simple-service
+              servicePort: 80
